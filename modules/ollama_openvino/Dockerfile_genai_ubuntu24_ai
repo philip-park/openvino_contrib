@@ -39,8 +39,9 @@ RUN sed -i 's/OV_GENAI_STREAMMING_STATUS_RUNNING/OV_GENAI_STREAMING_STATUS_RUNNI
 
 
 RUN go build -o /usr/bin/ollama .
+ENV LD_LIBRARY_PATH=""
 ENV LD_LIBRARY_PATH=/home/ollama_ov_server/openvino_genai_ubuntu24_2026.0.0.0_x86_64/runtime/lib/intel64:$LD_LIBRARY_PATH
 
 ENV OLLAMA_HOST=0.0.0.0:11434
 EXPOSE 11434
-ENTRYPOINT ["/bin/bash", "-c", "source /home/ollama_ov_server/openvino_genai_ubuntu24_2025.2.0.0.dev20250513_x86_64/setupvars.sh && /usr/bin/ollama serve"]
+ENTRYPOINT ["/bin/bash", "-c", "source /home/ollama_ov_server/openvino_genai_ubuntu24_2026.0.0.0_x86_64/setupvars.sh && /usr/bin/ollama serve"]
